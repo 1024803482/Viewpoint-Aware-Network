@@ -1,7 +1,7 @@
 # Know Your Orientation: A Viewpoint-Aware Framework for Polyp Segmentation
 The official implementation of [PPFormer](https://link.springer.com/chapter/10.1007/978-3-031-16440-8_60) (MICCAI 2022) and VANet (Pending).  
 ## 1. Introduction
-## 1.1 Background
+### 1.1 Background
 Automatic polyp segmentation is a challenging task due to two reasons:  
 (i) The viewpoint variations presented in colonoscopy images, leading to diverse visual appearance of polyps (as shown in Figure 1).  
 (ii) The camouflage property of polyps poses difficulties in polyp boundary determination.  
@@ -105,8 +105,9 @@ python trainer_VANet.py
 ### 2.5 Testing
 Testing your trained model:
 ``` sh
-python tester_vanET.py
+python tester_VANet.py
 ```
+For a comprehensive evaluation, you can refer to the toolbox provided by [PraNet](https://github.com/DengPingFan/PraNet/blob/master).
 
 Visualize your viewpoint classifier:
 ``` sh
@@ -120,3 +121,27 @@ The visual results can directly capture the polyp locations, which is encouragin
     Figure 4. Visualization of attention maps in viewpoint classification via Grad-CAM++. (a) is the input image, where the polyp is represented by a closed red curve. (b) and (c) represent the attention maps generated from the classifier's parallel and vertical channels, respectively.
     </em>
 </p>
+
+## 3. Citation (will be updated soon)
+If you find this work or code is helpful in your research, please cite:
+
+```
+@inproceedings{cai2022using,
+  title={Using Guided Self-Attention with Local Information for Polyp Segmentation},
+  author={Cai, Linghan and Wu, Meijing and Chen, Lijiang and Bai, Wenpei and Yang, Min and Lyu, Shuchang and Zhao, Qi},
+  booktitle={Medical Image Computing and Computer Assisted Intervention--MICCAI 2022: 25th International Conference, Singapore, September 18--22, 2022, Proceedings, Part IV},
+  pages={629--638},
+  year={2022},
+  organization={Springer}
+}
+```
+
+## 4. Contributing
+Thanks to the following work for improving our project：
+- CvT: [https://github.com/microsoft/CvT/tree/main](https://github.com/microsoft/CvT/tree/main)
+- torch-cam: [https://github.com/frgfm/torch-cam](https://github.com/frgfm/torch-cam)
+- PraNet: [https://github.com/DengPingFan/PraNet/blob/master](https://github.com/DengPingFan/PraNet/blob/master)
+- albumentations: [https://github.com/albumentations-team/albumentations](albumentations)
+
+## 5. License
+Distributed under the Apache 2.0 License. See LICENSE for more information.
