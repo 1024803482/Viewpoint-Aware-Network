@@ -23,24 +23,20 @@ The overview of our work is shown in Figure 3. Given an input image, VANet first
     </em>
 </p>
 
-### 1.3 Key Components
-In addition to the cue collector, VANet uses VAFormer layers and BAFormer layers to commonly improve polyp segmentation performance. Figure 3 shows their structure.
-<p align="center">
-    <img src="./figures/formers.png"/ width="800"> <br />
-    <em> 
-    Figure 3. Structure of view-aware attention module and boundary-aware Transformer layer.
-    </em>
-</p>
-
-### 1.4 Performance
-VANet achieves the state-of-the-art performance on five polyp segmentation datasets ([benchmark](https://github.com/DengPingFan/PraNet/blob/master)). Additionally, VANet is capable of calibrating misaligned predictions and precisely determining polyp boundary.
+### 1.3 Performance
+VANet achieves the state-of-the-art performance on five polyp segmentation datasets ([benchmark](https://github.com/DengPingFan/PraNet/blob/master)), especially on the unseen datasets. Additionally, VANet is capable of calibrating misaligned predictions and precisely determining polyp boundary.
 <p align="center">
     <img src="./figures/Qualitative.png"/ width="800"> <br />
     <em> 
-    Figure 4. Qualitative comparison of the state-of-the-art polyp segmentation algorithms.
+    Figure 3. Qualitative comparison of the state-of-the-art polyp segmentation algorithms.
     </em>
 </p>
 
 <p align="center">
     <img src="./figures/Table3.png"/ width="800"> <br />
+    <em> 
+    Table 1. Quantative comparison of the state-of-the-art polyp segmentation algorithms.
+    </em>
 </p>
+
+## 2. Quick start
