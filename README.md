@@ -12,7 +12,7 @@ Automatic polyp segmentation is a challenging task due to two reasons:
     </em>
 </p>
 
-To overcome these issues, we present a novel framework, named viewpoint-aware network (VANet), that improves polyp segmentation performance by effectively using the viewpoint variations in colonoscopy images. Our motivation stems from the observation that during a colonoscopy, clinicians steer the colonoscope according to the position of the central lumen; when possible lesions are encountered, they reorient the colonoscope for detailed information. Therefore, we argue that the central lumen and polyps are two key characteristics for distinguishing viewpoints in colonoscopy images. Thus, a viewpoint classifier ([ResNet](https://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html) used here) can accurately capture the polyps via Grad-CAM++.
+To overcome these issues, we present a novel framework, named viewpoint-aware network (VANet), that improves polyp segmentation performance by effectively using the viewpoint variations in colonoscopy images. Our motivation stems from the observation that during a colonoscopy, clinicians steer the colonoscope according to the position of the central lumen; when possible lesions are encountered, they reorient the colonoscope for detailed information. Therefore, we argue that the central lumen and polyps are two key characteristics for distinguishing viewpoints in colonoscopy images. Thus, a viewpoint classifier ([ResNet](https://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html) used here) can accurately capture the polyps via [Grad-CAM++](https://ieeexplore.ieee.org/abstract/document/8354201).
 
 ### 1.2. Framework
 The overview of our work is shown in Figure 3. Given an input image, VANet first employs the cue collector to capture potential polyp locations. The location cue is then fed into the VAFormer layers of the encoder to improve attention calculation. VANet's encoder comprises three encoder blocks, where each block is formed by alternating VAFormer and Transformer layers. In the decoding stage, VANet generates prediction maps at different levels and uses them to guide self-attention in BAFormer layers for refinement. We use Convolution Vision Transformer ([CvT](https://openaccess.thecvf.com/content/ICCV2021/html/Wu_CvT_Introducing_Convolutions_to_Vision_Transformers_ICCV_2021_paper.html) as a backbone to construct the encoder-decoder, which integrates convolution operations in Vision Transformer, enabling our model to extract both global and local features. In addition, the removal of position encoding in CvT supports VANet with flexible inputs.
@@ -39,4 +39,84 @@ VANet achieves the state-of-the-art performance on five polyp segmentation datas
     </em>
 </p>
 
-## 2. Quick start
+## 2. Quick Start
+### 2.1 Installation
+VANet is extended from [CvT](https://github.com/microsoft/CvT).Assuming that you have installed PyTorch and TorchVision, if not, please follow the [officiall instruction](https://pytorch.org/) to install them firstly. 
+Intall the dependencies using cmd:
+``` sh
+python -m pip install -r requirements.txt --user -q
+```
+The code is developed and tested using pytorch 1.8.0. Other versions of pytorch are not fully tested.
+### 2.2 Data preparation
+Data are saved at Datasets. We divide the colonoscopy into two classes, namely, parallel and vertical. The VANet_Dataset can be found at [Google-Drive](https://drive.google.com/drive/u/0/folders/1kbYzj9rj_DLwmqqJziIs4sh_KHYbBo6q). Please prepare the data as following:
+
+``` sh
+|-Datasets
+  |-VANet_Dataset
+    |-TrainDataset
+    | |-Parallel
+    | | |-img1.png
+    | | |-img2.png
+    | | |-...
+    | |-Vertical
+    | | |-img3.png
+    | | |-...
+    | |-mask
+    | | |-img1.png
+    | | |-...
+    | |-...
+    |-TestDataset
+      |-CVC-300
+      | |-img5.jpg
+      | |-...
+      |-CVC-ColonDB
+      | |-img6.jpg
+      | |-...
+      |-ETIS-LaribPolypDB
+      | |-img7.jpg
+      | |-...
+      |-...
+```
+
+### 2.3 Pretrained Weights
+Pretrained weights are saved at "./weights/", including CvT-13 model and Resnet (for viewpoint classification). The trained weights can be found at [Google-Drive](https://drive.google.com/drive/u/0/folders/1VZcObrNuZS09GWZmOpJIyqp9lBOPV661). Please prepare the weights as following:
+
+``` sh
+|-weights
+  |-ResNet-18-352x352.pth
+  |-ResNet-50-352x352.pth
+  |-CvT-13-384x384-IN-22k.pth
+  |-CvT-13-384x384-IN-1k.pth
+  |-...
+```
+Of course, you can also train the viewpoint classification model yourself.
+
+### 2.4 Training
+Training your viewpoint classifier:
+``` sh
+python trainer_cls.py
+```
+
+Training your VANet:
+``` sh
+python trainer_VANet.py
+```
+
+### 2.5 Testing
+Testing your trained model:
+``` sh
+python tester_vanET.py
+```
+
+Visualize your viewpoint classifier:
+``` sh
+python attention_map.py
+```
+
+The visual results can directly capture the polyp locations, which is encouraging.
+<p align="center">
+    <img src="./figures/Colormap.png"/ width="600"> <br />
+    <em> 
+    Figure 4. Visualization of attention maps in viewpoint classification via Grad-CAM++. (a) is the input image, where the polyp is represented by a closed red curve. (b) and (c) represent the attention maps generated from the classifier's parallel and vertical channels, respectively.
+    </em>
+</p>
