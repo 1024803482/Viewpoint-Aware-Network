@@ -77,6 +77,7 @@ Data are saved at Datasets. We divide the colonoscopy into two classes, namely, 
       | | |-img4.png
       | | |-...
       |-CVC-ColonDB
+      | |-Parallel
       | | |-img6.png
       | | |-...
       | |-Vertical
