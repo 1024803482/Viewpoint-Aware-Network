@@ -94,11 +94,11 @@ Pretrained weights are saved at "./weights/", including CvT-13 model and Resnet 
 
 ``` sh
 |-weights
-  |-ResNet-18-352x352.pth
-  |-ResNet-50-352x352.pth
-  |-CvT-13-384x384-IN-22k.pth
-  |-CvT-13-384x384-IN-1k.pth
-  |-...
+| |-ResNet-18-352x352.pth
+| |-ResNet-50-352x352.pth
+| |-CvT-13-384x384-IN-22k.pth
+| |-CvT-13-384x384-IN-1k.pth
+| |-...
 ```
 Surely, you can also train the viewpoint classification model yourself.
 
