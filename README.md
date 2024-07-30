@@ -1,5 +1,5 @@
 # Know Your Orientation: A Viewpoint-Aware Framework for Polyp Segmentation
-The official implementation of [PPFormer](https://link.springer.com/chapter/10.1007/978-3-031-16440-8_60) (MICCAI 2022) and VANet (MedIA 2024).  
+The official implementation of [PPFormer](https://link.springer.com/chapter/10.1007/978-3-031-16440-8_60) (MICCAI 2022) and [VANet](https://www.sciencedirect.com/science/article/pii/S1361841524002135) (MedIA 2024).  
 ## 1. Introduction
 ### 1.1 Background
 Automatic polyp segmentation is a challenging task due to two reasons:  
@@ -144,6 +144,17 @@ If you find this work or code is helpful in your research, please cite:
   pages={629--638},
   year={2022},
   organization={Springer}
+}
+
+@article{CAI2024103288,
+title = {Know your orientation: A viewpoint-aware framework for polyp segmentation},
+journal = {Medical Image Analysis},
+pages = {103288},
+year = {2024},
+issn = {1361-8415},
+doi = {https://doi.org/10.1016/j.media.2024.103288},
+url = {https://www.sciencedirect.com/science/article/pii/S1361841524002135},
+author = {Linghan Cai and Lijiang Chen and Jianhao Huang and Yifeng Wang and Yongbing Zhang},
 }
 ```
 
