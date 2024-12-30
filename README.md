@@ -133,7 +133,7 @@ The visual results can directly capture the polyp locations, which is encouragin
     </em>
 </p>
 
-## 3. Citation (will be updated soon)
+## 3. Citation
 If you find this work or code is helpful in your research, please cite:
 
 ```
